@@ -1,0 +1,31 @@
+{
+	"name": "vite-plugin-template",
+	"description": "Simple template for Vite plugins.",
+	"version": "0.0.1",
+	"publishConfig": {
+		"access": "public"
+	},
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"build": "pnpm mkdist --src=src --dist=dist --format=esm -d --ext=js",
+		"play": "cd playground && pnpm run dev",
+		"lint": "biome format . --write",
+		"publish": "pnpm build && pnpm publish"
+	},
+	"files": ["dist"],
+	"exports": {
+		".": {
+			"import": "./dist/mod.js",
+			"types": "./dist/mod.d.ts"
+		}
+	},
+	"peerDependencies": {
+		"vite": "^5.3.4"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.8.3",
+		"@types/node": "^20.14.11",
+		"mkdist": "1.5.4"
+	}
+}
